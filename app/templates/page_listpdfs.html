@@ -1,0 +1,9 @@
+{% extends layout %}
+{% block navbar %}{% include 'partial_navbar.html' %}{% endblock %}
+{% block content %}
+	<div id="listPdfImages">
+		{% for img in pdf_img_files %}
+			<div><img src="/static/pdfpng/{{ img }}" style="height:150px;border:1px solid black" /><a href="/pdfedit/{{img}}">Edit</a><a href="/pdfedit2/{{img}}">Scrape</a></div>
+		{% endfor %}
+	</div>
+{% endblock %}

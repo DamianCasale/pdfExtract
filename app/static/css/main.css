@@ -1,0 +1,27 @@
+#theButton {
+	width: 100px;
+	background-color: green;
+
+	color:white;
+	text-align:center;
+
+	cursor:pointer;
+
+	border: 1px solid black;
+	
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+}
+
+#theButton:hover {
+	background-color: orange;
+}
+
+#theNavbar {
+	background-color: gray;
+	margin-left: -8px;
+	margin-right: -8px;
+	padding: 10px;
+	margin-top: -8px;
+}

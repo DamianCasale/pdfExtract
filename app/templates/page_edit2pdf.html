@@ -1,0 +1,48 @@
+{% extends layout %}
+{% block navbar %}{% include 'partial_navbar.html' %}{% endblock %}
+{% block content %}
+	<div style="text-align:center">
+		<img id="theImg" src="/static/pdfpng/{{ pdfTemplate }}" style="border:1px solid black;cursor:sw-resize;" />
+	</div>
+	<script>
+		$(document).on('mousedown', '#theImg', function(e) {
+
+			var height = this.height;
+			var width = this.width;
+
+			var infoX = 	{
+						click:		e.clientX,
+						offset:	this.offsetLeft,
+						scroll:	$(document).scrollLeft(),
+						size:		this.width
+					}
+
+			var infoY = 	{
+						click:		e.clientY,
+						offset:	this.offsetTop,
+						scroll:	$(document).scrollTop(),
+						size:		this.height
+					}
+
+			console.log( infoX.size + " :: X > " + (infoX.click + infoX.scroll - infoX.offset) );
+			console.log( infoY.size + " :: Y > " + (infoY.click + infoY.scroll - infoY.offset) );
+
+			$.ajax({
+	            type: "POST",
+	            url: "/pdfscrape",
+	            data: {
+					theImage: $(this).attr("src").split("/")[ $(this).attr("src").split("/").length-1 ],
+					x: (infoX.click + infoX.scroll - infoX.offset),
+					y: (infoY.click + infoY.scroll - infoY.offset)
+				},
+	            success: function (html) {
+	            	console.log("Found String : "+html)
+	            	alert("Found String : "+html)
+	            }, error: function (data) {
+	                console.log("failed")
+	            }
+            });
+
+		});
+	</script>
+{% endblock %}
