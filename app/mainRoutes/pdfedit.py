@@ -54,7 +54,7 @@ def pdfedit(id):
 				'template': 'page_editpdf.html',
 				'replaces': '#theMainContent',
 				'data' : {
-					'title':		'Edit Pdf Templates',
+					'title': 'Edit Pdf Templates',
 					'pdfTemplate': id
 				}
 			}
@@ -111,7 +111,7 @@ def pdfscrape():
 	path = os.path.abspath( os.path.dirname( sys.argv[0] ) )
 
 	thePNG = path+"/app/static/pdfpng/"+request.form["theImage"].split("-")[0]
-	thePDF = thePNG[0:-4]+".pdf"
+	thePDF = thePNG+".pdf"
 
 	print "page : %s"%page
 	print "thePDF : %s"%thePDF
