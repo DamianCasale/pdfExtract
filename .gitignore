@@ -63,3 +63,4 @@ node_modules/
 
 # dont include the compiled templates
 app/static/js/templates.js
+app/static/pdfpng/*
