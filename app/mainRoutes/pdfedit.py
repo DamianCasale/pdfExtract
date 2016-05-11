@@ -110,10 +110,18 @@ def pdfscrape():
 
 	path = os.path.abspath( os.path.dirname( sys.argv[0] ) )
 
-	thePNG = path+"/app/static/pdfpng/"+request.form["theImage"].split("-")[0]
+
+	foundit = re.search(r"-\d+.png",request.form["theImage"])
+
+	if foundit:
+		thePNG = path+"/app/static/pdfpng/"+request.form["theImage"].split("-")[0]
+	else:
+		thePNG = path+"/app/static/pdfpng/"+request.form["theImage"].split(".png")[0]
+
 	thePDF = thePNG+".pdf"
 
 	print "page : %s"%page
+	print "thePNG : %s"%thePNG
 	print "thePDF : %s"%thePDF
 
 	pdf = pdfquery.PDFQuery(thePDF)
