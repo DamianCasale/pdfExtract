@@ -2,7 +2,7 @@ from app import app
 import re
 import sys,os
 
-from flask import render_template, request, Response
+from flask import render_template, request, Response,jsonify
 from os import listdir
 from os.path import isfile, join
 
@@ -150,7 +150,7 @@ def pdfscrape():
 
 	extracted = pdf.extract([('with_formatter', 'text'),('found', 'LTTextLineHorizontal:overlaps_bbox("%s,%s,%s,%s")'%(posX,posY,posX,posY))])
 	print "ExTrAcTeD :: %s"%extracted['found']
-	return extracted['found']
+	return "%s  x: %s  y:%s" % (extracted['found'],posX,posY)
 
 	return ''
 
